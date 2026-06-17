@@ -1,0 +1,30 @@
+import pyttsx3
+import time
+def talk(words):
+    print(f"speaking:{words}")
+    try:
+        engine = pyttsx3.init()
+        engine.setProperty('rate', 150)
+        engine.say(words)
+        engine.runAndWait()
+        engine.stop
+        del engine
+
+    except Exception as e:
+        print(f"error: {e}")
+
+def main():
+    print("rebooted voice lab")
+    print("type 'exit' to stop")
+
+    while True:
+        msg = input("say something").strip()
+        if msg.lower() == "exit" :
+            break
+        if msg:
+            talk(msg)
+            time.sleep(0.1)
+
+if __name__ == "__main__":
+    main()
+    
